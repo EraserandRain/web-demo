@@ -1,0 +1,10 @@
+switchRed() {
+      if (this.isRed == false) {
+        this.isRed = true;
+      } else {
+        this.isRed = false;
+      }
+    },
+
+
+      isRed: false,
