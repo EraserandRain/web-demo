@@ -1,11 +1,12 @@
 <template>
   <div id="app">
+    <h1>Type name and mark who is student</h1>
     <input type="text" id="name" @keyup.enter="addInput" />
     <ul id="list">
       <li
         v-for="item in arr"
         :key="item.listNum"
-        @click="switchRed"
+        @click="switchRed(arr.indexOf(item))"
         :class="{ red: item.isRed }"
       >
         {{ item.message }}
@@ -22,11 +23,11 @@ export default {
     };
   },
   methods: {
-    switchRed() {
-      if (this.arr[this.arr.listNum].isRed == false) {
-        this.arr[this.arr.listNum].isRed = true;
+    switchRed(item) {
+      if (this.arr[item].isRed == false) {
+        this.arr[item].isRed = true;
       } else {
-        this.arr[this.arr.listNum].isRed = false;
+        this.arr[item].isRed = false;
       }
     },
     addInput() {
@@ -35,10 +36,6 @@ export default {
         isRed: false,
         message: document.getElementById("name").value,
       });
-      for (let i = 0; i < this.arr.length; i++) {
-        console.log(this.arr[i]);
-        console.log(this.arr[i].listNum + " and " + this.arr[i].message);
-      }
       document.getElementById("name").value = "";
     },
   },
